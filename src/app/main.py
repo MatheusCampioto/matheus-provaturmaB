@@ -71,3 +71,46 @@ def proxima():
     senhas[codigo]["chamada_em"] = agora()
     historico.append(codigo)
     return senhas[codigo]
+
+@app.post("/senhas/{codigo}/concluir")
+def concluir(codigo: str):
+    senha = senhas.get(codigo)
+    if not senha:
+        return erro(404, "senha_nao_encontrada")
+    if senha["status"] != "chamada":
+        return erro(409, "senha_nao_chamada")
+    senha["status"] = "concluida"
+    return senha
+
+@app.post("/senhas/{codigo}/rechamar")
+def rechamar(codigo: str):
+    senha = senhas.get(codigo)
+    if not senha:
+        return erro(404, "senha_nao_encontrada")
+    if senha["status"] != "chamada":
+        return erro(409, "senha_nao_chamada")
+    senha["chamada_em"] = agora()
+    historico.append(codigo)
+    return senha
+
+@app.post("/senhas/{codigo}/cancelar")
+def cancelar(codigo: str):
+    senha = senhas.get(codigo)
+    if not senha:
+        return erro(404, "senha_nao_encontrada")
+    if senha["status"] != "aguardando":
+        return erro(409, "senha_nao_aguardando")
+    senha["status"] = "cancelada"
+    return senha
+
+@app.get("/painel")
+def painel():
+    chamadas = []
+    vistos = set()
+    for codigo in reversed(historico):
+        if codigo not in vistos:
+            vistos.add(codigo)
+            chamadas.append(senhas[codigo])
+        if len(chamadas) == 5:
+            break
+    return {"chamadas": chamadas}
