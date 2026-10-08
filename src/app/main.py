@@ -49,3 +49,25 @@ def criar_senha(body: dict):
     senhas[codigo] = senha
     fila.append(codigo)
     return senha
+
+@app.get("/senhas/proxima")
+def proxima():
+    global preferenciais
+    aguardando = [c for c in fila if senhas[c]["status"] == "aguardando"]
+    if not aguardando:
+        return erro(404, "fila_vazia")
+    prefs = [c for c in aguardando if senhas[c]["tipo"] == "preferencial"]
+    normais = [c for c in aguardando if senhas[c]["tipo"] == "normal"]
+    if preferenciais < LIMITE_PREFERENCIAL and prefs:
+        codigo = prefs[0]
+        preferenciais += 1
+    elif normais:
+        codigo = normais[0]
+        preferenciais = 0
+    else:
+        codigo = prefs[0]
+        preferenciais += 1
+    senhas[codigo]["status"] = "chamada"
+    senhas[codigo]["chamada_em"] = agora()
+    historico.append(codigo)
+    return senhas[codigo]
