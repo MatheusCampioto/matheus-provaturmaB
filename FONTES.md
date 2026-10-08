@@ -34,7 +34,7 @@
 
 | # | Link público da conversa | Onde o conteúdo foi usado |
 | --- | --- | --- |
-| 1 |(https://claude.ai/share/bd558955-63be-4a93-9ab8-64fa32bb1056) | Consulta sobre estrutura FastAPI, lógica de fila e persistência em /data |
+| 1 | https://claude.ai/share/bd558955-63be-4a93-9ab8-64fa32bb1056 | Consulta sobre estrutura FastAPI, lógica de fila e persistência em /data |
 
 ## 3. Compromisso
 
