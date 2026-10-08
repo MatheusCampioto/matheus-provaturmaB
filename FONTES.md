@@ -16,11 +16,7 @@
 
 | # | URL | O que foi consultado | Onde aparece no entregável |
 | --- | --- | --- | --- |
-| — | | | |
-
-*(Ex.: `https://docs.oracle.com/...` → sintaxe de `Optional` → `plan.md` na
-seção de decisões. Esse link é ILUSTRATIVO — fora de linha numerada não
-conta. Se nenhum site foi consultado, escreva: **"Nenhum site consultado."**)*
+| 1 | https://fastapi.tiangolo.com | Documentação FastAPI — estrutura de endpoints e status codes | src/app/main.py |
 
 ## 2. Uso de IA — **somente como consulta**
 
@@ -38,9 +34,7 @@ conta. Se nenhum site foi consultado, escreva: **"Nenhum site consultado."**)*
 
 | # | Link público da conversa | Onde o conteúdo foi usado |
 | --- | --- | --- |
-| — | | |
-
-*(Se nenhuma IA foi utilizada, escreva: **"Nenhuma IA utilizada."**)*
+| 1 |(https://claude.ai/share/bd558955-63be-4a93-9ab8-64fa32bb1056) | Consulta sobre estrutura FastAPI, lógica de fila e persistência em /data |
 
 ## 3. Compromisso
 
@@ -48,7 +42,7 @@ Declaro que todo o conteúdo deste repositório que não é de minha autoria dir
 está declarado acima, e que consigo explicar qualquer trecho entregue — tenha
 ele vindo da minha cabeça, de um site ou de uma IA consultada.
 
-**Nome / RA:**
+**Nome / RA:** Matheus Felipe Campioto Catenacci / 220141372
 
 [^transparencia]: Este arquivo é, ele mesmo, um exemplo de markdown bem
     usado: *alert* para a regra crítica, tabelas para os registros e *footnote*
